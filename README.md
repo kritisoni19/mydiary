@@ -1,1 +1,1 @@
-![Images](../mydiary/public/images/mydiary.png)
+![Images](./public/images/mydiary.png)
