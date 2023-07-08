@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const uiSliceData = createSlice({
+const uiSlice = createSlice({
     name:'ui',
     initialState:{
         homePage:true,
@@ -30,5 +30,5 @@ const uiSliceData = createSlice({
     }
 })
 
-export const {showEntries,showForm,showEditForm} = uiSliceData.actions;
-export default uiSliceData;
+export const {showEntries,showForm,showEditForm} = uiSlice.actions;
+export default uiSlice;

@@ -22,7 +22,7 @@ function App() {
             <Route path="/myentries" element={<MyEntries/>} />
             <Route path="/entrylist" element={<DiaryEntryList/>} />
             <Route path="/editentry" element={<EditEntry/>} />
-            <Route path="/home" element={<Home/>} />
+            <Route path="/" element={<Home/>} />
           </Routes>
         </Provider>
       </div>

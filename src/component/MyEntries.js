@@ -17,7 +17,7 @@ function MyEntries() {
         return(
           <DiaryEntryList
             key={entry.id}
-            id={entry.id}
+            id={entry.id} 
             title={entry.title}
             date={entry.date}
             desc={entry.desc}
