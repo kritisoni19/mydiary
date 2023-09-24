@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const uiSlice = createSlice({
-    name:'ui',
+    name:'uilook',
     initialState:{
         homePage:true,
         entryform:false,

@@ -3,6 +3,7 @@ import { useDispatch ,useSelector } from "react-redux";
 import {getEntry,deleteEntry} from "../utils/cartSlice";
 import { useNavigate } from "react-router-dom";
 
+
 function DiaryEntryList(props) {
   const navigate = useNavigate();
     const entry = useSelector((state) => state.cart.DiaryItem);
@@ -23,6 +24,7 @@ function DiaryEntryList(props) {
 
   return (
     <>
+   
       <div className="max-w-2xl mx-auto mb-5">
           <div className="w-full  p-6 bg-purple-200  rounded-lg shadow mb-2" >
           <div>
@@ -45,6 +47,7 @@ function DiaryEntryList(props) {
           >
             Delete
           </button>
+        
         </div>
       </div>
       </div>

@@ -1,11 +1,47 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
+import {  onAuthStateChanged,signOut } from "firebase/auth";
+import {auth} from '../utils/firebase';
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addUser, removeUser } from "../utils/userSlice";
 
 function Menu() {
-  // console.log(cartItems)
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  // updating store
+  const handleSignOut=()=>{
+    signOut(auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+      // navigate('/error')
+    });
+
+  }
+
+  useEffect(()=>{ 
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, 
+      const {uid,email,displayName} = user;
+      dispatch(addUser({uid:uid, email:email,displayName:displayName}));
+      console.log("hi" +user)
+      navigate('/addentry');
+    } else {
+      // User is signed out
+ 
+      dispatch(removeUser());
+      navigate('/');
+    }
+
+  });
+  },[])
+
   return (
     <>
-      {/* {cartItems.length} */}
+   
       <div className="bg-[#7968dc]">
         <nav className=" border-gray-200 dark:bg-gray-900">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3">
@@ -42,28 +78,22 @@ function Menu() {
               className="hidden w-full md:block md:w-auto"
               id="navbar-default"
             >
-              <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                <li>
-                  <Link
-                    to="/"
-                    className="text-lg  py-2  pr-4 text-white  font-Kalam">
-                    Home
+           
+           <ul className="items-center  font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg
+                md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-gray-900 
+                dark:border-gray-700">
+              <li>
+                  <Link to="/signin" className="text-lg py-2  text-white font-Kalam">
+                    <button type="button" className="bg-purple-800 px-3 rounded-3xl py-2"> Sign In</button>
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/addentry"
-                    className="text-lg py-2  text-white font-Kalam"
-                  >
-                    Add Entry
+                  <Link to="/" className="text-lg py-2  text-white font-Kalam">
+                    <button type="button" className="bg-purple-800 px-3 rounded-3xl py-2" onClick={handleSignOut}>
+                     Sign Out
+                    </button>
                   </Link>
                 </li>
-                <li>
-                  <Link to="/myentries" className="text-lg py-2  text-white font-Kalam">
-                    My Entries
-                  </Link>
-                </li>
-              
               </ul>
             </div>
           </div>
