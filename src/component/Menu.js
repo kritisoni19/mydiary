@@ -1,43 +1,36 @@
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-import {  onAuthStateChanged,signOut } from "firebase/auth";
+import { onAuthStateChanged,signOut } from "firebase/auth";
 import {auth} from '../utils/firebase';
-import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-
 function Menu() {
 
+
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  // updating store
-  const handleSignOut=()=>{
+  const navigate = useNavigate()
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const {uid,email,password,displayName} = user;
+        dispatch(addUser({uid:uid,email:email,password:password,displayName:displayName}));
+         navigate('/addentry');
+        // ...
+      } else {
+        // User is signed out
+        dispatch(removeUser());
+        navigate('/')
+      }
+    });
+    
+  },[])
+  const handleSignOut = () =>{
     signOut(auth).then(() => {
-      // Sign-out successful.
+      navigate('/')
     }).catch((error) => {
-      // An error happened.
       // navigate('/error')
     });
-
   }
-
-  useEffect(()=>{ 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, 
-      const {uid,email,displayName} = user;
-      dispatch(addUser({uid:uid, email:email,displayName:displayName}));
-      console.log("hi" +user)
-      navigate('/addentry');
-    } else {
-      // User is signed out
- 
-      dispatch(removeUser());
-      navigate('/');
-    }
-
-  });
-  },[])
 
   return (
     <>
