@@ -15,7 +15,7 @@ function App() {
 
     <div className="">
     
-      <div className="w-full bg-no-repeat bg-cover bg-center h-[100vh]" style={{backgroundImage:'url("../images/bg-diary.png")'}}> 
+      <div className="w-full bg-no-repeat bg-cover bg-center h-[100%] min-h-[100vh]" style={{backgroundImage:'url("../images/bg-diary.png")'}}> 
     
         <Provider store={store}>
         <Menu/>

@@ -3,15 +3,13 @@
 import { useSelector } from "react-redux";
 import DiaryEntryList from './DiaryEntryList';
 import { Link } from "react-router-dom";
+
 function MyEntries() {
   const entries = useSelector((state) => state.cart.diaryList);
 
- 
-
-
   return (
     <>
-      <div className="max-w-2xl mx-auto pt-24 mb-5">
+      <div className="max-w-2xl mx-auto pt-24">
       <div className="mb-6">
     <Link
                     to="/addentry"

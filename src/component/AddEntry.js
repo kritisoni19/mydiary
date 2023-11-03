@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import {showEntries} from "../utils/uiSlice"
 import { useNavigate } from "react-router-dom";
 
+
 function AddEntry() {
     const [title,setTitle] = useState('');
     const [desc,setDesc] = useState('');
@@ -24,7 +25,7 @@ function AddEntry() {
         dispatch(showEntries());
 
         navigate('/myentries')
-   
+      
     }
     const showEntriesHandler = () => {
       dispatch(showEntries());

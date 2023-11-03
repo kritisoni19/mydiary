@@ -8,7 +8,8 @@ function Menu() {
 
 
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
   useEffect(()=>{
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -75,18 +76,28 @@ function Menu() {
            <ul className="items-center  font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg
                 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-gray-900 
                 dark:border-gray-700">
-              <li>
+
+                
+                 <li>
                   <Link to="/signin" className="text-lg py-2  text-white font-Kalam">
                     <button type="button" className="bg-purple-800 px-3 rounded-3xl py-2"> Sign In</button>
                   </Link>
                 </li>
-                <li>
+                 <li>
                   <Link to="/" className="text-lg py-2  text-white font-Kalam">
                     <button type="button" className="bg-purple-800 px-3 rounded-3xl py-2" onClick={handleSignOut}>
                      Sign Out
                     </button>
                   </Link>
                 </li>
+                {/* <li>
+                  <Link to="/myentries" className="text-lg py-2  text-white font-Kalam">
+                    <button type="button" className="bg-purple-800 px-3 rounded-3xl py-2">
+                      My Entries
+                    </button>
+                  </Link>
+                </li> */}
+               
               </ul>
             </div>
           </div>

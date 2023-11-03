@@ -25,8 +25,8 @@ function DiaryEntryList(props) {
   return (
     <>
    
-      <div className="max-w-2xl mx-auto mb-5">
-          <div className="w-full  p-6 bg-purple-200  rounded-lg shadow mb-2" >
+      <div className="max-w-2xl mx-auto pb-2">
+          <div className="w-full  p-6 bg-purple-200  rounded-lg shadow" >
           <div>
           <h3 className="mb-3 border-b-2  border-gray-700 pb-3"><b>Date:</b> {props.date}</h3>
           <h2 className="mb-3 text-lg "><b>Title:</b> {props.title}</h2>
