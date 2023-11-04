@@ -2,7 +2,6 @@
 
 import { useSelector } from "react-redux";
 import DiaryEntryList from './DiaryEntryList';
-import { Link } from "react-router-dom";
 
 function MyEntries() {
   const entries = useSelector((state) => state.cart.diaryList);
