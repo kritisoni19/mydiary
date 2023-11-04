@@ -2,6 +2,7 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const items = localStorage.getItem('diaryList') !== null ? JSON.parse(localStorage.getItem('diaryList')) : []
 const cartSlice  = createSlice({
     name:'cart',
@@ -30,9 +31,11 @@ const cartSlice  = createSlice({
           },
         deleteEntry(state, action) {
             state.diaryList = state.diaryList.filter((el) => el.id !== action.payload);
+            localStorage.setItem('diaryList',JSON.stringify(state.diaryList.map(item=>item)))
           },
 
-          
+
+         
        
     }
 })

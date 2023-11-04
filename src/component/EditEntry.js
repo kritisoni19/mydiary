@@ -35,7 +35,7 @@ function EditEntry() {
   return (
     <>
 
-      <div className="max-w-md mx-auto mt-24 mb-5">
+      <div className="max-w-[50%] mx-auto mt-24 mb-5">
         <div className="w-full  p-6 bg-purple-200  rounded-lg shadow ">
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white ">
             Add Entry

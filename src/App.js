@@ -8,7 +8,6 @@ import store from './utils/store';
 import DiaryEntryList from './component/DiaryEntryList';
 import EditEntry from './component/EditEntry';
 import Home from './component/Home';
-import SignIn from './component/SignIn';
 
 function App() {
   return (
@@ -24,7 +23,6 @@ function App() {
             <Route path="/myentries" element={<MyEntries/>} />
             <Route path="/entrylist" element={<DiaryEntryList/>} />
             <Route path="/editentry" element={<EditEntry/>} />
-            <Route path="/signin" element={<SignIn/>} />
             <Route path="/" element={<Home/>} />
           </Routes>
         </Provider>

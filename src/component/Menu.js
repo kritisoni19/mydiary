@@ -1,37 +1,12 @@
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { onAuthStateChanged,signOut } from "firebase/auth";
-import {auth} from '../utils/firebase';
-import { useDispatch } from "react-redux";
-import { addUser, removeUser } from "../utils/userSlice";
+
+import { Link } from "react-router-dom";
+
 function Menu() {
 
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  useEffect(()=>{
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const {uid,email,password,displayName} = user;
-        dispatch(addUser({uid:uid,email:email,password:password,displayName:displayName}));
-         navigate('/addentry');
-        // ...
-      } else {
-        // User is signed out
-        dispatch(removeUser());
-        navigate('/')
-      }
-    });
-    
-  },[])
-  const handleSignOut = () =>{
-    signOut(auth).then(() => {
-      navigate('/')
-    }).catch((error) => {
-      // navigate('/error')
-    });
-  }
+
+
 
   return (
     <>
@@ -79,24 +54,18 @@ function Menu() {
 
                 
                  <li>
-                  <Link to="/signin" className="text-lg py-2  text-white font-Kalam">
-                    <button type="button" className="bg-purple-800 px-3 rounded-3xl py-2"> Sign In</button>
+                  <Link to="/addentry" className="text-lg py-2  text-white font-Kalam">
+                    <button type="button" className="bg-purple-800 px-3 rounded-3xl py-2"> Add Entry</button>
                   </Link>
                 </li>
                  <li>
-                  <Link to="/" className="text-lg py-2  text-white font-Kalam">
-                    <button type="button" className="bg-purple-800 px-3 rounded-3xl py-2" onClick={handleSignOut}>
-                     Sign Out
+                  <Link to="/myentries" className="text-lg py-2  text-white font-Kalam">
+                    <button type="button" className="bg-purple-800 px-3 rounded-3xl py-2" >
+                     My Entries
                     </button>
                   </Link>
                 </li>
-                {/* <li>
-                  <Link to="/myentries" className="text-lg py-2  text-white font-Kalam">
-                    <button type="button" className="bg-purple-800 px-3 rounded-3xl py-2">
-                      My Entries
-                    </button>
-                  </Link>
-                </li> */}
+          
                
               </ul>
             </div>
